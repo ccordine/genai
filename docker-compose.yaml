@@ -1,0 +1,14 @@
+services:
+  go-web-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8089:8089" # Map port 8080 of the container to port 8080 on the host
+    environment:
+      - ENV_VARIABLE=your_value # Set any environment variables your application needs
+    restart: unless-stopped
+    volumes:
+      - .:/app # Mount the current directory to /app in the container
+    command: ["./genai"] # Override the default command to run your start script
+
